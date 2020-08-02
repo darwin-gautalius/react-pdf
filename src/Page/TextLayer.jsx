@@ -4,8 +4,6 @@ import makeCancellable from 'make-cancellable-promise';
 
 import PageContext from '../PageContext';
 
-import TextLayerItem from './TextLayerItem';
-
 import {
   cancelRunningTask,
   errorOnDev,
@@ -91,15 +89,62 @@ export class TextLayerInternal extends PureComponent {
     if (!textItems) {
       return null;
     }
+    const { scale } = this.props;
+    const [xMin, yMin, xMax, yMax] = this.unrotatedViewport.viewBox;
+    const rotation = this.unrotatedViewport.rotation % 360;
 
-    return textItems.map((textItem, itemIndex) => (
-      <TextLayerItem
-        // eslint-disable-next-line react/no-array-index-key
-        key={itemIndex}
-        itemIndex={itemIndex}
-        {...textItem}
-      />
-    ));
+    return textItems.map((textItem, keyItemIndex) => {
+      const { left, top, height: renderedHeight } = ((
+        [/* fontHeightPx */, /* fontWidthPx */, width, height, x, y],
+      ) => {
+        if (rotation >= 270) {
+          return {
+            top: xMax - x - width,
+            left: yMax - y,
+            height: width,
+          };
+        }
+        if (rotation >= 180) {
+          return {
+            top: yMin + y,
+            left: xMax - x,
+            height,
+          };
+        }
+        if (rotation >= 90) {
+          return {
+            top: xMin + x,
+            left: yMin + y,
+            height: width,
+          };
+        }
+        return {
+          top: yMax - y - height,
+          left: x + xMin,
+          height,
+        };
+      })(textItem.transform);
+
+      return (
+        <span
+          // eslint-disable-next-line react/no-array-index-key
+          key={keyItemIndex}
+          ref={(ref) => { this.item = ref; }}
+          style={{
+            fontFamily: 'sans-serif',
+            fontSize: `${renderedHeight * scale}px`,
+            position: 'absolute',
+            top: `${top * scale}px`,
+            left: `${left * scale}px`,
+            transformOrigin: 'left bottom',
+            whiteSpace: 'pre',
+            pointerEvents: 'all',
+          }}
+        >
+          {textItem.str}
+        </span>
+      );
+    });
   }
 
   render() {
