@@ -39,27 +39,35 @@ export class TextLayerItemInternal extends PureComponent {
     return rotation % 180 !== 0;
   }
 
-  get fontSize() {
+  get height() {
     const { transform } = this.props;
     const { defaultSideways } = this;
-    const [fontHeightPx, fontWidthPx] = transform;
-    return defaultSideways ? fontWidthPx : fontHeightPx;
+    const [/* fontHeightPx */, /* fontWidthPx */, width, height] = transform;
+    return defaultSideways ? width : height;
   }
 
   get top() {
     const { transform } = this.props;
     const { unrotatedViewport: viewport, defaultSideways } = this;
-    const [/* fontHeightPx */, /* fontWidthPx */, offsetX, offsetY, x, y] = transform;
-    const [/* xMin */, yMin, /* xMax */, yMax] = viewport.viewBox;
-    return defaultSideways ? x + offsetX + yMin : yMax - (y + offsetY);
+    const [/* fontHeightPx */, /* fontWidthPx */, width, height, x, y] = transform;
+    const [xMin, yMin, xMax, yMax] = viewport.viewBox;
+    const flip = this.unrotatedViewport.rotation % 360 >= 180;
+    if (defaultSideways) {
+      return flip ? xMax - x - width : xMin + x;
+    }
+    return flip ? yMin + y : yMax - y - height;
   }
 
   get left() {
     const { transform } = this.props;
     const { unrotatedViewport: viewport, defaultSideways } = this;
-    const [/* fontHeightPx */, /* fontWidthPx */, /* offsetX */, /* offsetY */, x, y] = transform;
-    const [xMin] = viewport.viewBox;
-    return defaultSideways ? y - xMin : x - xMin;
+    const [/* fontHeightPx */, /* fontWidthPx */, /* width */, /* height */, x, y] = transform;
+    const [xMin, yMin, xMax, yMax] = viewport.viewBox;
+    const flip = this.unrotatedViewport.rotation % 360 >= 180;
+    if (defaultSideways) {
+      return flip ? yMax - y : y + yMin;
+    }
+    return flip ? xMax - x : x + xMin;
   }
 
   async getFontData(fontName) {
@@ -110,16 +118,15 @@ export class TextLayerItemInternal extends PureComponent {
   };
 
   render() {
-    const { fontSize, top, left } = this;
+    const { height, top, left } = this;
     const { customTextRenderer, scale, str: text } = this.props;
 
     return (
       <span
         ref={(ref) => { this.item = ref; }}
         style={{
-          height: '1em',
           fontFamily: 'sans-serif',
-          fontSize: `${fontSize * scale}px`,
+          fontSize: `${height * scale}px`,
           position: 'absolute',
           top: `${top * scale}px`,
           left: `${left * scale}px`,

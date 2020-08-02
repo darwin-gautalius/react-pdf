@@ -19,9 +19,6 @@ const fileTypes = [
   PropTypes.string,
   PropTypes.instanceOf(ArrayBuffer),
   PropTypes.shape({
-    data: PropTypes.object,
-    httpHeaders: PropTypes.object,
-    range: PropTypes.object,
     url: PropTypes.string,
     withCredentials: PropTypes.bool,
   }),
@@ -45,12 +42,6 @@ export const isLinkService = PropTypes.instanceOf(LinkService);
 export const isLinkTarget = PropTypes.oneOf(['_self', '_blank', '_parent', '_top']);
 
 export const isPage = PropTypes.shape({
-  _transport: PropTypes.shape({
-    fontLoader: PropTypes.object.isRequired,
-  }).isRequired,
-  commonObjs: PropTypes.shape({
-    _objs: PropTypes.object.isRequired,
-  }).isRequired,
   getAnnotations: PropTypes.func.isRequired,
   getTextContent: PropTypes.func.isRequired,
   getViewport: PropTypes.func.isRequired,

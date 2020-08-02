@@ -6,9 +6,6 @@ const fileTypes = [
   PropTypes.string,
   PropTypes.instanceOf(ArrayBuffer),
   PropTypes.shape({
-    data: PropTypes.object,
-    httpHeaders: PropTypes.object,
-    range: PropTypes.object,
     url: PropTypes.string,
     withCredentials: PropTypes.bool,
   }),

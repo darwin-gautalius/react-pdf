@@ -1,8 +1,6 @@
-[![npm](https://img.shields.io/npm/v/react-pdf.svg)](https://www.npmjs.com/package/react-pdf) ![downloads](https://img.shields.io/npm/dt/react-pdf.svg) ![build](https://travis-ci.com/wojtekmaj/react-pdf.svg?branch=master) ![dependencies](https://img.shields.io/david/wojtekmaj/react-pdf.svg) ![dev dependencies](https://img.shields.io/david/dev/wojtekmaj/react-pdf.svg) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+# @dgautalius/React-PDF
 
-# React-PDF
-
-Display PDFs in your React app as easily as if they were images.
+Display PDFs in your React app as easily as if they were images. Forked from [wojtekmaj/react-pdf](https://github.com/wojtekmaj/react-pdf)
 
 ## tl;dr
 * Install by executing `npm install react-pdf` or `yarn add react-pdf`.
@@ -19,11 +17,6 @@ A minimal demo page can be found in `sample` directory.
 ## Before you continue
 
 React-PDF is under constant development. This documentation is written for React-PDF 5.x branch. If you want to see documentation for other versions of React-PDF, use dropdown on top of GitHub page to switch to an appropriate tag. Here are quick links to the newest docs from each branch:
-
-* [v4.x](https://github.com/wojtekmaj/react-pdf/blob/v4.x/README.md)
-* [v3.x](https://github.com/wojtekmaj/react-pdf/blob/v3.x/README.md)
-* [v2.x](https://github.com/wojtekmaj/react-pdf/blob/v2.x/README.md)
-* [v1.x](https://github.com/wojtekmaj/react-pdf/blob/v1.8.3/README.md)
 
 ## Getting started
 
