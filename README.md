@@ -3,35 +3,16 @@
 Display PDFs in your React app as easily as if they were images. Forked from [wojtekmaj/react-pdf](https://github.com/wojtekmaj/react-pdf)
 
 ## tl;dr
-* Install by executing `npm install react-pdf` or `yarn add react-pdf`.
-* Import by adding `import { Document } from 'react-pdf'`.
+* Install by executing `npm install @dgautalius/react-pdf` or `yarn add @dgautalius/react-pdf`.
+* Import by adding `import { Document } from '@dgautalius/react-pdf'`.
 * Use by adding `<Document file="..." />`. `file` can be a URL, base64 content, Uint8Array, and more.
 * Put `<Page />` components inside `<Document />` to render pages.
-
-## Demo
-
-A minimal demo page can be found in `sample` directory.
-
-[Online demo](http://projects.wojtekmaj.pl/react-pdf/) is also available!
-
-## Before you continue
-
-React-PDF is under constant development. This documentation is written for React-PDF 5.x branch. If you want to see documentation for other versions of React-PDF, use dropdown on top of GitHub page to switch to an appropriate tag. Here are quick links to the newest docs from each branch:
 
 ## Getting started
 
 ### Compatibility
 
 To use the latest version of React-PDF, your project needs to use React 16.3 or later.
-
-If you use an older version of React, please refer to the table below to a find suitable React-PDF version. Don't worry - as long as you're running React 15.5 or later, you won't be missing out a lot!
-
-| React version | Newest compatible React-PDF version |
-|-------|--------|
-| ≥16.3 | 4.x    |
-| ≥15.5 | 3.x    |
-| ≥0.13 | 0.0.10 |
-| ≥0.11 | 0.0.4  |
 
 ### Installation
 
@@ -270,40 +251,3 @@ Displays an outline (table of contents). Should be placed inside `<Document />`.
 ## License
 
 The MIT License.
-
-## Author
-
-<table>
-  <tr>
-    <td>
-      <img src="https://github.com/wojtekmaj.png?s=100" width="100">
-    </td>
-    <td>
-      Wojciech Maj<br />
-      <a href="mailto:kontakt@wojtekmaj.pl">kontakt@wojtekmaj.pl</a><br />
-      <a href="http://wojtekmaj.pl">http://wojtekmaj.pl</a>
-    </td>
-  </tr>
-</table>
-
-## Thank you
-
-This project wouldn't be possible without awesome work of Niklas Närhinen <niklas@narhinen.net> who created its initial version and without Mozilla, author of [pdf.js](http://mozilla.github.io/pdf.js). Thank you!
-
-### Sponsors
-
-Thank you to all our sponsors! [Become a sponsor](https://opencollective.com/react-pdf-wojtekmaj#sponsor) and get your image on our README on GitHub.
-
-<a href="https://opencollective.com/react-pdf-wojtekmaj#sponsors" target="_blank"><img src="https://opencollective.com/react-pdf-wojtekmaj/sponsors.svg?width=890"></a>
-
-### Backers
-
-Thank you to all our backers! [Become a backer](https://opencollective.com/react-pdf-wojtekmaj#backer) and get your image on our README on GitHub.
-
-<a href="https://opencollective.com/react-pdf-wojtekmaj#backers" target="_blank"><img src="https://opencollective.com/react-pdf-wojtekmaj/backers.svg?width=890"></a>
-
-### Top Contributors
-
-Thank you to all our contributors that helped on this project!
-
-![Top Contributors](https://opencollective.com/react-pdf/contributors.svg?width=890&button=false)

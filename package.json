@@ -1,6 +1,6 @@
 {
   "name": "@dgautalius/react-pdf",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Display PDFs in your React app as easily as if they were images.",
   "main": "dist/umd/entry.js",
   "module": "dist/esm/entry.js",
